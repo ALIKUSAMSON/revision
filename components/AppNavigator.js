@@ -1,17 +1,16 @@
 import React from 'react';
-//This is an example code for NavigationDrawer//
-
 import { View, Image, TouchableOpacity } from 'react-native';
-
 import {
   createDrawerNavigator,
   createStackNavigator,
   createAppContainer,
-  createSwitchNavigator
+  createSwitchNavigator,
+  createBottomTabNavigator
 } from 'react-navigation';
-import welcome from './welcome';
 import login from './login';
 import signup from './signup'
+import ScreenNavigator from './ScreenNavigator'
+
 
 class NavigationDrawerStructure extends React.Component {
   //Structure for the navigatin Drawer
@@ -34,103 +33,61 @@ class NavigationDrawerStructure extends React.Component {
   }
 }
 
-//For React Navigation 2.+ need to use StackNavigator instead createStackNavigator
-//const FirstActivity_StackNavigator = StackNavigator({
 
-//For React Navigation 3.+]
-
-
-const FirstActivity_StackNavigator = createStackNavigator({
+const WelcomeScreen = createSwitchNavigator({
   //All the screen from the Screen1 will be indexed here
+
   First: {
-    screen: welcome,
-    navigationOptions: ({ navigation }) => ({
-      
-      title: 'Dashboard',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#FF9800',
-      },
-      headerTintColor: '#fff',
-    }),
+    screen: ScreenNavigator
+
   },
+
   });
 
-//For React Navigation 3.+
-const Screen2_StackNavigator = createStackNavigator({
-  //All the screen from the Screen2 will be indexed here
+
+const HighScoresScreen = createStackNavigator({
+  //All the screen from the Sceen2 will be indexed here
   Second: {
     screen: login,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions:({
       title: 'Results',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#607d8b',
       },
       headerTintColor: '#fff',
     }),
   },
 });
 
-//For React Navigation 2.+ need to use StackNavigator instead createStackNavigator
-//const FirstActivity_StackNavigator = StackNavigator({
-
-//For React Navigation 3.+
-const Screen3_StackNavigator = createStackNavigator({
+const SettingScreen = createStackNavigator({
   //All the screen from the Screen3 will be indexed here
 
   Third: {
     screen: signup,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions:({
       title: 'Timetables',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#607d8b',
       },
       headerTintColor: '#fff',
     }),
   },
 });
 
-
-//For React Navigation 2.+ need to use DrawerNavigator instead createDrawerNavigator
-//const DrawerNavigatorExample = DrawerNavigator({
-
-//For React Navigation 3.+
-const DrawerNavigatorExample = createDrawerNavigator({
-
- 
-  //Drawer Optons and indexing
-
-  Screen1: {
-    //Title
-    screen: FirstActivity_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Dashboard',
-    },
+const AppTabNavigator = createBottomTabNavigator({
+  HOME:WelcomeScreen,
+  SETTINGS:HighScoresScreen,
+  ABOUT:SettingScreen
   },
-
-  Screen2: {
-    //Title
-    screen: Screen2_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Results',
-    },
-  },
-
-  Screen3: {
-    //Title
-    screen: Screen3_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Timetables',
-    },
-  },
+  {tabBarOptions: {
+    initialRouteName: 'WelcomeScreen',
+    activeTintColor: '#FFFFFF',
+    inactiveTintColor: '#3E2723',
+    fontSize:'90',
+    style: {
+      backgroundColor: '#999999',
+   },
+},
 });
 
-//For React Navigation 2.+ need to export App only
-//export default DrawerNavigatorExample;
-//For React Navigation 3.+
-export default createAppContainer(DrawerNavigatorExample);
-
-
+export default createAppContainer(AppTabNavigator);

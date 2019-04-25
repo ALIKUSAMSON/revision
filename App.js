@@ -7,16 +7,19 @@ import React from 'react';import {
 } from 'react-navigation';
 import SplashScreen from './components/SplashScreen';
 import AppNavigator from './components/AppNavigator';
-import schedule from './components/schedule';
-import syllabus from './components/syllabus';
-import reading from './components/reading';
+import ScreenNavigator from './components/ScreenNavigator';
+import savenavigation from './components/savenavigation';
+
+
+
 
 const InitialNavigator = createSwitchNavigator({
   Splash: SplashScreen,
-  App: AppNavigator,
-  schedule:schedule,
-  syllabus:syllabus,
-  reading:reading
+ App: AppNavigator,
+  
+
+
+
 });
 
 

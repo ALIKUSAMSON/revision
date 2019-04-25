@@ -3,6 +3,13 @@ import { Text, View, StyleSheet, TextInput, Button, ListView } from 'react-nativ
 import { Constants } from 'expo';
 
 export default class reading extends Component {
+  static navigationOptions = {
+    title: 'Reading Tips',
+    headerStyle: {
+      backgroundColor: '#FF9800',
+    },
+    headerTintColor: '#fff',
+  };
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});

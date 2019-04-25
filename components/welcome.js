@@ -8,31 +8,15 @@ import {
   ActivityIndicator,
   Dimensions
 } from "react-native";
-import {
-  createDrawerNavigator,
-  createStackNavigator,
-  createAppContainer,
-  createSwitchNavigator
-} from 'react-navigation';
-import schedule from './schedule';
-import syllabus from './syllabus';
-import reading from './reading';
-import reference from './reference';
-import quotes from './quotes';
-import credits from './credits';
-
 
 var width = Dimensions.get('window').width
 
 export default class welcome extends React.Component{
-
   constructor(props) {
-    super(props);
-   
+    super(props); 
 }
 
   render(){
-
     return(
       <View style={styles.container}>
 
@@ -63,17 +47,15 @@ export default class welcome extends React.Component{
       </View>
       );
   }
-
 }
 
 const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
     flexWrap:'wrap'
-
   },
   box:{
-    backgroundColor:'black',
+    backgroundColor:'#0097a7',
     height:150,
     margin:2,
     marginVertical:15,
@@ -84,39 +66,7 @@ const styles = StyleSheet.create({
   },
   text:{
     color:'white',
-    fontSize:20
+    fontSize:30
   }
 
 });
-
-
-const MyStackNavigator = createStackNavigator(
-  {
-    schedule: schedule,
-    syllabus: syllabus,
-    reading:reading,
-    reference: reference,
-    quotes: quotes,
-    credits:credits
-  },
-  {
-    initialRouteName: 'schedule',
-  }
-);
-
-const MySwitchNavigator = createSwitchNavigator(
-  {
-    schedule: schedule,
-    syllabus: syllabus,
-    reading:reading,
-    reference: reference,
-    quotes: quotes,
-    credits:credits 
-  },
-  {
-    initialRouteName: 'syllabus',
-  }
-);
-
-
-

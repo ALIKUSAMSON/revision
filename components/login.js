@@ -1,25 +1,31 @@
-import React from 'react';
-//import react in our code.
-import { StyleSheet, View, Text } from 'react-native';
-// import all basic components
- 
+import React from 'react'
+import {Text,View,StyleSheet} from 'react-native'
+
 export default class login extends React.Component {
-  //Screen1 Component
+  constructor() {
+    super();
+  }
+
   render() {
     return (
-      <View style={styles.MainContainer}>
-        <Text style={{ fontSize: 23 }}> Screen 1 </Text>
+      <View style={styles.container}>
+        <Text style={styles.subheader}>All settings under incubation</Text>
       </View>
+
     );
   }
 }
- 
+
+
 const styles = StyleSheet.create({
-  MainContainer: {
+  container: {
     flex: 1,
-    paddingTop: 20,
+    backgroundColor: '#fff',
     alignItems: 'center',
-    marginTop: 50,
     justifyContent: 'center',
-  }
+  },
+subheader: {
+  fontSize: 18,
+  fontWeight: 'bold'
+},
 });

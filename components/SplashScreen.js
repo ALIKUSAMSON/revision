@@ -6,7 +6,7 @@ export default class SplashScreen extends React.Component {
     return new Promise((resolve) =>
       setTimeout(
         () => { resolve('result') },
-        100
+        1000
       )
     )
   }
@@ -24,8 +24,8 @@ export default class SplashScreen extends React.Component {
   render() {
     return (
       <View style={styles.viewStyles}>   
-        <Image style = {styles.image}
-          source={require('./images/transformers.jpg')}/>
+        <Text style={styles.start}>Revise!</Text>
+        <Text style={styles.slogan}>learn how to learn</Text>
       </View>
     );
   }
@@ -36,12 +36,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'#607d8b'
   },
-    image:{
-    width:250,
-    height:200,
+    start:{
+    fontSize:50,
+    color:'white',
     alignSelf:'center',
-    marginTop: 50,
   },
-}
-);
+  slogan:{
+    fontSize:20,
+    color:'white',
+    alignSelf:'center',
+},
+});
